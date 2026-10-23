@@ -8,10 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { DialogRedactWrapper } from '../studeditor/dialog-edit-wrapper/dialog-redact-wrapper/dialog-redact-wrapper';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @Component({
-  imports: [FormsModule, AsyncPipe, CommonModule],
+  imports: [FormsModule, AsyncPipe, CommonModule, MatFormFieldModule, MatInputModule, MatTableModule],
   selector: 'app-table',
   styleUrl: './table.css',
   templateUrl: './table.html',
@@ -21,6 +24,8 @@ export class Table {
   constructor( public baseService: BaseServise, public dialog: MatDialog){
     this.baseService.loadStudents();
   }
+
+  displayedColumns: string[] = ['id', 'name', 'surname', 'options'];
 
   OnAddNewStudentClicked(): void {
     const dialogRef = this.dialog.open(DialogEditWrapper, {
