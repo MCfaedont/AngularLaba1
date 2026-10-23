@@ -1,0 +1,11 @@
+{
+    "/api/*": {
+        "target": "https://049a8eb6a1337039.mokky.dev",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}

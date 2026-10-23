@@ -1,0 +1,20 @@
+<mat-toolbar class="toolbar">
+    <button class="men-but" mat-button (click)="sidenav.toggle()">|||</button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidecontainer">
+    <mat-sidenav #sidenav mode="over" class="sidepanel">
+        
+        <a class="menu-link">Table student</a>
+        <button mat-raised-button class="buttonGoinfo" routerLink="/info" >students info</button>
+        <a class="menu-link">Current weather</a>
+        <a class="menu-link">Student lunches</a>
+        <a class="menu-link">Our contacts</a>
+        <a class="menu-link">Main</a>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-table></app-table>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

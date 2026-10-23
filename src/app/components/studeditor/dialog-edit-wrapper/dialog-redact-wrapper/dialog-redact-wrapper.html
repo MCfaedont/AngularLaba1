@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Redact student</h1>
+
+<div mat-dialog-content style="display: inline; padding: 2px; margin: auto;">
+
+    <mat-form-field class="full-width-input">
+        <input matInput type="text" placeholder="Name of student"
+        [(ngModel)]="redactStudent.name" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input">
+        <input matInput type="text" placeholder="Surname of student"
+        [(ngModel)]="redactStudent.surname" required>
+    </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
+    <button class="right-align" mat-raised-button color="primary"
+    [mat-dialog-close]="redactStudent">Redact</button>
+
+</div>
+
