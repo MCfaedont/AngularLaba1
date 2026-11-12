@@ -1,8 +1,7 @@
 import { BaseServise } from './../../service/base-servise';
-import { Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
 import { Student } from '../../models/student';
 import { DialogEditWrapper } from '../studeditor/dialog-edit-wrapper/dialog-edit-wrapper';
-import { DialogDeleteWrapper } from '../studeditor/dialog-edit-wrapper/dialog-delete-wrapper/dialog-delete-wrapper';
 import { MatDialog } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
@@ -11,22 +10,38 @@ import { DialogRedactWrapper } from '../studeditor/dialog-edit-wrapper/dialog-re
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 @Component({
-  imports: [FormsModule, AsyncPipe, CommonModule, MatFormFieldModule, MatInputModule, MatTableModule],
+  imports: [FormsModule,  AsyncPipe, CommonModule, MatFormFieldModule, MatInputModule, MatTableModule, MatPaginator, MatPaginatorModule],
   selector: 'app-table',
   styleUrl: './table.css',
   templateUrl: './table.html',
 })
-export class Table {
-
-  constructor( public baseService: BaseServise, public dialog: MatDialog){
-    this.baseService.loadStudents();
-  }
+export class Table implements AfterViewInit{
 
   displayedColumns: string[] = ['id', 'name', 'surname', 'options'];
+  dataSource = new MatTableDataSource<Student>([]);
+  
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.baseService.studentsSubject.subscribe( students => {
+      this.dataSource.data = students;
+      if (this.paginator) {
+        console.log("paginator ")
+        this.dataSource.paginator = this.paginator;
+      }
+    });
+    
+  }
+
+  constructor( public baseService: BaseServise, public dialog: MatDialog){}
+
+  
   OnAddNewStudentClicked(): void {
     const dialogRef = this.dialog.open(DialogEditWrapper, {
       width: '400px',
@@ -45,7 +60,6 @@ export class Table {
       }
     
   }
-
 
   OnEditStudentClicked(rowId: number): void{
     const dialogRef = this.dialog.open(DialogRedactWrapper, {

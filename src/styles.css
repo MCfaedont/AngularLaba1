@@ -8,6 +8,7 @@
     --vgrey-color: #211c22;
 }
 
+
 .sidecontainer {
   height: 100%; 
 }
@@ -71,7 +72,7 @@ color: var(--light-primary-color) !important;
 table{
     text-align: center;
     table-layout: fixed;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 75px;
     color: var(--white-color);
     font-size: 18px;
@@ -131,4 +132,8 @@ h2{
 
 .buttonGoinfo{
     background-color: var(--primary-color);
+}
+
+mat-paginator {
+    margin-left: 77px;
 }

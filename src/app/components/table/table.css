@@ -1,0 +1,50 @@
+
+.main-table table.mat-mdc-table {
+  width: 100% !important;
+  table-layout: fixed !important;
+  background-color: transparent !important;
+}
+
+
+.mat-column-id {
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+}
+.mat-column-name {
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+}
+.mat-column-surname {
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
+}
+.mat-column-options {
+  width: 400px !important;
+  min-width: 400px !important;
+  max-width: 400px !important;
+}
+
+
+th.mat-header-cell{
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+}
+
+th.mat-mdc-header-cell {
+  color: white !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+td.mat-mdc-cell {
+  color: #ffffff !important;
+  background-color: transparent !important;
+  border-bottom-color: #444 !important;
+}
+
+tr.mat-mdc-row:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}

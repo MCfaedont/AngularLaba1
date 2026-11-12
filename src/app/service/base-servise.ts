@@ -36,4 +36,7 @@ export class BaseServise {
     return this.http.patch<Student>(`${this.studentsUrl}/${studented.id = rowID}`, {name: studented.name, surname: studented.surname});
   }
 
+  //получить массив с сервера.
+  //надо или преобразовать обсервабл в обычный массив или возвращать опять обсерабл и подумать нужен ли он кому то
+
 }
